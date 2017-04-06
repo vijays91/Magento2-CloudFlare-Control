@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author VIJAYAKUMAR S
+ * @copyright Copyright (c) 2017
+ * @package Learn_Cloudflare
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="vijaystore" translate="label" sortOrder="180">
+            <label>Cloudflare</label>
+        </tab>
+        <section id="cloudflare_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cloudflare Setting</label>
+            <tab>vijaystore</tab>
+            <resource>Learn_Cloudflare::cloudflare_configuration</resource>
+            <group id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General Cloudflare Settings</label>
+                <field id="enable_cloudflare" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <validate>required-entry </validate>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable the Cloudflare system.</comment>
+                </field>
+                <field id="email_id" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email-ID</label>
+                    <validate>required-entry validate-email</validate>
+                    <comment></comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="api_key" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API authentication key</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="zone_id" translate="label comment" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Zone ID</label>
+                    <validate>required-entry </validate>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="security_profile" translate="label comment" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Security profile</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Security</source_model>
+                    <comment>Adjust your website's Security Level to determine which visitors will receive a challenge page.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>                
+                <field id="development_mode" translate="label comment" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Development mode</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Developmentmode</source_model>
+                    <comment>Temporarily bypass our cache allowing you to see changes to your origin server in realtime.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="caching_level" translate="label comment" type="select" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Caching level</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Cachinglevel</source_model>
+                    <comment>Determine how much of your website's static content you want Cloudflare to cache. Increased caching can speed up page load time.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="auto_minify" translate="label comment" type="select" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Auto minify</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Autominify</source_model>
+                    <comment>Reduce the file size of source code on your website.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="ssl" translate="label comment" type="select" sortOrder="90" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>SSL</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Ssl</source_model>
+                    <comment>Encrypt communication to and from your website using SSL.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="always_online" translate="label comment" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Always Online</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Alwaysonline</source_model>
+                    <comment>Always Online will serve pages from our cache if your server is offline.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="rocket_loader" translate="label comment" type="select" sortOrder="110" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Rocket Loader</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Rocketloader</source_model>
+                    <comment>Improve load time for pages that include JavaScript.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="ipv6" translate="label comment" type="select" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Automatic IPv6</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Onoff</source_model>
+                    <comment>Enable IPv6 support and gateway.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="websockets" translate="label comment" type="select" sortOrder="130" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>WebSockets</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Onoff</source_model>
+                    <comment>Allow WebSockets connections to your origin server</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="ip_geolocation" translate="label comment" type="select" sortOrder="140" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>IP Geolocation</label>
+                    <validate>required-entry </validate>
+                    <source_model>Learn\Cloudflare\Model\Source\Onoff</source_model>
+                    <comment>Allow WebSockets connections to your origin server.</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+                <field id="flush" translate="label comment" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Learn\Cloudflare\Block\System\Config\Button</frontend_model>
+                    <comment>Flush cache</comment>
+                    <depends>
+                        <field id="*/*/enable_cloudflare">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

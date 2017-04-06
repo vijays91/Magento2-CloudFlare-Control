@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author VIJAYAKUMAR S
+ * @copyright Copyright (c) 2017
+ * @package Learn_Cloudflare
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Learn_Cloudflare::Gift" title="Cloudflare" module="Learn_Cloudflare" parent="Magento_Catalog::inventory" action="cloudflare/index/flush" resource="Learn_Cloudflare::gift"/>
+    </menu>
+</config>
